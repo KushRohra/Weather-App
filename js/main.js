@@ -40,7 +40,6 @@ function displayData(data) {
     document.getElementById("clouds").innerHTML = data.clouds.all;
     document.getElementById("windSpeed").innerHTML = data.wind.speed;
     document.getElementById("pressure").innerHTML = data.main.pressure;
-
     document.getElementById("humidity").innerHTML = data.main.humidity;
 
     document.getElementById("temp").innerHTML = data.main.temp;
