@@ -19,6 +19,7 @@ function weatherBalloonLatLon(lat, lon) {
     fetch(api.base+'weather?lat='+lat+'&lon='+lon+'&APPID='+api.key)  
     .then(function(resp) { return resp.json() }) 
     .then(function(data) {
+        console.log(data);
       displayData(data);
     })
 }
@@ -33,6 +34,7 @@ function weatherBalloonCity(city) {
     fetch(api.base+'weather?q='+city+'&APPID='+api.key)  
     .then(function(resp) { return resp.json() }) 
     .then(function(data) {
+      console.log(data);
       displayData(data);
     })
 }
@@ -41,7 +43,8 @@ function displayData(data) {
     document.getElementById("lat").innerHTML = latitude;
     document.getElementById("lon").innerHTML = longitude;
 
-    document.getElementById("city").innerHTML = data.name
+    document.getElementById("cityName").innerHTML = data.name;
+    console.log(data.name);
     document.getElementById("mainWeather").innerHTML = data.weather[0].main;
     document.getElementById("description").innerHTML = data.weather[0].description;
 
