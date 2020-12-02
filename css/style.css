@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow: auto;
     height: 100vh;
     background-image: url("../img/background.jpg");
     background-size: cover;
@@ -11,6 +11,16 @@ h1 {
     font-size: 5rem;
     margin-left: 20%;
     font-family: sans-serif;
+}
+
+#topcorner{
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+}
+
+#topcorner p {
+    margin: 1px;
 }
 
 #content, #innerContent, #desc {

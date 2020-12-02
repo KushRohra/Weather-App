@@ -26,6 +26,9 @@ function showPosition(position) {
 }
 
 function displayData(data) {
+    document.getElementById("lat").innerHTML = latitude;
+    document.getElementById("lon").innerHTML = longitude;
+
     document.getElementById("city").innerHTML = data.name
     document.getElementById("mainWeather").innerHTML = data.weather[0].main;
     document.getElementById("description").innerHTML = data.weather[0].description;
