@@ -3,14 +3,27 @@ body {
     height: 100vh;
     background-image: url("../img/background.jpg");
     background-size: cover;
+    color: #E0D7D7;
 }
 
 
 h1 {
     font-size: 5rem;
     margin-left: 20%;
+    font-family: sans-serif;
 }
 
-#content, #innerContent {
-    margin-left: 3vw;
+#content, #innerContent, #desc {
+    margin-left: 2vw;
 }
+
+#mainWeather {
+    margin-bottom: 2px;
+    font-size: 1.8rem;
+}
+
+#desc {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+

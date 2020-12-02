@@ -27,5 +27,12 @@ function showPosition(position) {
 
 function displayData(data) {
     document.getElementById("city").innerHTML = data.name
-    document.getElementById("mainWeather").innerHTML = '<h5>'+data.weather[0].main+'</h5>';
+    document.getElementById("mainWeather").innerHTML = data.weather[0].main;
+    document.getElementById("description").innerHTML = data.weather[0].description;
+
+    var iconCode = data.weather[0].icon;
+    var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+
+
+    document.getElementById("weatherIcon").src = iconurl;
 }
