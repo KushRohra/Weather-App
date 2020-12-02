@@ -16,9 +16,9 @@
         <p>Longitude: <span id="lon"></span></p>
     </div>
     <div><h1>Weather App</h1></div>
-    <form id="form">
+    <form onsubmit="return citySearch()">
         <div class="input-field">
-            <input placeholder="Enter a city name here" id="first_name" type="text" class="validate">
+            <input placeholder="Enter a city name here" id="city" type="text" class="validate">
         </div>
         <button value="submit" class="btn" type="submit">Search</button>
     </form>

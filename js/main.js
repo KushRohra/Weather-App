@@ -1,3 +1,8 @@
+const api = {
+    key: '52272358b1bbd36f9820c327ca4fe861',
+    base: "https://api.openweathermap.org/data/2.5/"
+}
+
 window.onload = function() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -7,20 +12,29 @@ window.onload = function() {
 function showPosition(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-    weatherBalloon(latitude, longitude);
+    weatherBalloonLatLon(latitude, longitude);
 }
 
-function weatherBalloon(lat, lon) {
-    var key = '52272358b1bbd36f9820c327ca4fe861';
-    fetch('https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&appid=' + key)  
-    .then(function(resp) { return resp.json() }) // Convert data to json
+function weatherBalloonLatLon(lat, lon) {
+    fetch(api.base+'weather?lat='+lat+'&lon='+lon+'&APPID='+api.key)  
+    .then(function(resp) { return resp.json() }) 
     .then(function(data) {
-      console.log(data);
       displayData(data);
     })
-    .catch(function() {
-      // catch any errors
-    });
+}
+
+function citySearch() {
+    city = document.getElementById("city").value;
+    weatherBalloonCity(city);
+    return false;
+}
+
+function weatherBalloonCity(city) {
+    fetch(api.base+'weather?q='+city+'&APPID='+api.key)  
+    .then(function(resp) { return resp.json() }) 
+    .then(function(data) {
+      displayData(data);
+    })
 }
 
 function displayData(data) {
@@ -54,19 +68,10 @@ function displayData(data) {
 }
 
 function KtoC(temp) {
-    return temp-272.15;
+    return (temp-272.15).toFixed(2);
 }
 
 function KtoF(temp) {
     tempC = KtoC(temp)
-    return (tempC*9/5)+32;
-}
-
-var form = document.getElementById("form");
-console.log(form)
-
-form.addEventListener("submit", citySearch);
-
-function citySearch() {
-    console.log("1");
+    return ((tempC*9/5)+32).toFixed(2);
 }
