@@ -5,10 +5,21 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Weather App</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
     <script src='js/main.js'></script>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Weather App</h1>
+    </div>
+    <br><br><br>
+    <div id="content">
+        <h3>Weather conditions for <span id="city"></span>:</h3>
+        <div id="innerContent">
+            <div id="mainWeather"></div>
+        </div>
+    </div>
 </body>
 </html>

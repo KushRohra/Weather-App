@@ -1,0 +1,16 @@
+body {
+    overflow: hidden;
+    height: 100vh;
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+}
+
+
+h1 {
+    font-size: 5rem;
+    margin-left: 20%;
+}
+
+#content, #innerContent {
+    margin-left: 3vw;
+}
