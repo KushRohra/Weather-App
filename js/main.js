@@ -1,5 +1,3 @@
-var latitude, longitude;
-
 window.onload = function() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -9,20 +7,20 @@ window.onload = function() {
 function showPosition(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
+    weatherBalloon(latitude, longitude);
+}
 
-    function weatherBalloon() {
-        var key = '52272358b1bbd36f9820c327ca4fe861';
-        fetch('https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&appid=' + key)  
-        .then(function(resp) { return resp.json() }) // Convert data to json
-        .then(function(data) {
-          console.log(data);
-          displayData(data);
-        })
-        .catch(function() {
-          // catch any errors
-        });
-    }
-    weatherBalloon();
+function weatherBalloon(lat, lon) {
+    var key = '52272358b1bbd36f9820c327ca4fe861';
+    fetch('https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&appid=' + key)  
+    .then(function(resp) { return resp.json() }) // Convert data to json
+    .then(function(data) {
+      console.log(data);
+      displayData(data);
+    })
+    .catch(function() {
+      // catch any errors
+    });
 }
 
 function displayData(data) {
@@ -62,4 +60,13 @@ function KtoC(temp) {
 function KtoF(temp) {
     tempC = KtoC(temp)
     return (tempC*9/5)+32;
+}
+
+var form = document.getElementById("form");
+console.log(form)
+
+form.addEventListener("submit", citySearch);
+
+function citySearch() {
+    console.log("1");
 }
