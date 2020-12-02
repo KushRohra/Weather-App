@@ -4,23 +4,25 @@ body {
     background-image: url("../img/background.jpg");
     background-size: cover;
     color: #E0D7D7;
+    border: 0;
 }
 
 
 h1 {
     font-size: 5rem;
-    margin-left: 20%;
+    text-align: center;
     font-family: sans-serif;
 }
 
 #topcorner{
     position: absolute;
     top: 1vw;
-    right: 1vw;
+    right: 0;
 }
 
 #topcorner p {
     margin: 1px;
+    margin-left: 0;
 }
 
 #content, #innerContent, #desc {
@@ -40,16 +42,19 @@ h1 {
 #additionalContent {
     position: fixed;
     width: 100vw;
-    background: #E0D7D7;
-    height: 15vh;
+    height: auto;
     bottom: 0%;
     color: black;
+}
+
+#additionalContent p, #additionalContent h5{
+    text-align: center;
+    margin-bottom: 1px;
 }
 
 @media (max-width: 600px) {
     h1 {
         font-size: 2.5rem;
-        margin-left: 10%;
     }
     h3 {
         font-size: 2.2rem;
@@ -61,6 +66,12 @@ h1 {
         font-size: 0.8rem;
     }
     #topcorner {
+        font-size: 0.7rem;
+    }
+    #additionalContent h5 {
+        font-size: 1rem;
+    }
+    #additionalContent p {
         font-size: 0.7rem;
     }
 }
