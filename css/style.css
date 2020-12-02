@@ -25,7 +25,7 @@ h1 {
     margin-left: 0;
 }
 
-#content, #innerContent, #desc {
+#content, #innerContent {
     margin-left: 2vw;
 }
 
@@ -44,7 +44,6 @@ h1 {
     width: 100vw;
     height: auto;
     bottom: 0%;
-    color: black;
 }
 
 #additionalContent p, #additionalContent h5{
@@ -67,13 +66,13 @@ h1 {
         font-size: 2.5rem;
     }
     h3 {
-        font-size: 2.2rem;
+        font-size: 1.4rem;
     }
     #mainWeather {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
     #desc {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
     }
     #topcorner {
         font-size: 0.7rem;
@@ -82,6 +81,6 @@ h1 {
         font-size: 1rem;
     }
     #additionalContent p {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
 }
