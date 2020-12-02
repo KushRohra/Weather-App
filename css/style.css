@@ -37,3 +37,30 @@ h1 {
     font-size: 1.2rem;
 }
 
+#additionalContent {
+    position: fixed;
+    width: 100vw;
+    background: #E0D7D7;
+    height: 15vh;
+    bottom: 0%;
+    color: black;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.5rem;
+        margin-left: 10%;
+    }
+    h3 {
+        font-size: 2.2rem;
+    }
+    #mainWeather {
+        font-size: 1.2rem;
+    }
+    #desc {
+        font-size: 0.8rem;
+    }
+    #topcorner {
+        font-size: 0.7rem;
+    }
+}
