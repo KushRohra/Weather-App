@@ -37,6 +37,10 @@ function displayData(data) {
     var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
     document.getElementById("weatherIcon").src = iconurl;
 
+    document.getElementById("clouds").innerHTML = data.clouds.all;
+    document.getElementById("windSpeed").innerHTML = data.wind.speed;
+    document.getElementById("pressure").innerHTML = data.main.pressure;
+
     document.getElementById("humidity").innerHTML = data.main.humidity;
 
     document.getElementById("temp").innerHTML = data.main.temp;

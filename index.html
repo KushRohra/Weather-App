@@ -18,7 +18,6 @@
     <div class="container">
         <h1>Weather App</h1>
     </div>
-    <br><br><br>
     <div id="content">
         <h3>Weather conditions for <span id="city"></span>:</h3>
         <div id="innerContent">
@@ -31,27 +30,29 @@
                     <div id="icon"><img id="weatherIcon" src="" alt="Weather icon"></div>
                 </div>
             </div>
+            <div id="extraDetails">
+                <p>Cloudiness: <span id="clouds"></span>%</p>
+                <p>Wind Speed: <span id="windSpeed"></span>meter/sec</p>
+                <p>Pressure: <span id="pressure"></span>hPa</p>
+                <p>Humidity: <span id="humdity"></span>%</p>
+            </div>
         </div>
     </div>
     <div id="additionalContent">
         <div class="row">
-            <div class="col s3">
-                <h5>Humidity</h5>
-                <p><span id="humidity"></span></p>
-            </div>
-            <div class="col s3">
+            <div class="col s4">
                 <h5>Temp</h5>
                 <p><span id="temp"></span>K</p>
                 <p><span id="tempC"></span><sup>o</sup>C</p>
                 <p><span id="tempF"></span><sup>o</sup>F</p>
             </div>
-            <div class="col s3">
+            <div class="col s4">
                 <h5>Min Temp</h5>
                 <p><span id="minTemp"></span>K</p>
                 <p><span id="minTempC"></span><sup>o</sup>C</p>
                 <p><span id="minTempF"></span><sup>o</sup>F</p>
             </div>
-            <div class="col s3">
+            <div class="col s4">
                 <h5>Max Temp</h5>
                 <p><span id="maxTemp"></span>K</p>
                 <p><span id="maxTempC"></span><sup>o</sup>C</p>
