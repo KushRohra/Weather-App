@@ -1,3 +1,5 @@
+var cityLat, cityLon;
+
 const api = {
     key: '52272358b1bbd36f9820c327ca4fe861',
     base: "https://api.openweathermap.org/data/2.5/",
@@ -28,7 +30,6 @@ function weatherBalloonLatLon(lat, lon) {
 function citySearch() {
     city = document.getElementById("city").value;
     weatherBalloonCity(city);
-    historicDataCity(city);
     return false;
 }
 
@@ -36,13 +37,15 @@ function weatherBalloonCity(city) {
     fetch(api.base+'weather?q='+city+'&appid='+api.key)  
     .then(function(resp) { return resp.json() }) 
     .then(function(data) {
-      displayData(data);
+        displayData(data);
     })
 }
 
 function displayData(data) {
     document.getElementById("lat").innerHTML = data.coord.lat;
+    cityLat = data.coord.lat;
     document.getElementById("lon").innerHTML = data.coord.lon;
+    cityLon = data.coord.lon;
 
     document.getElementById("cityName").innerHTML = data.name;
     document.getElementById("mainWeather").innerHTML = data.weather[0].main;
@@ -60,27 +63,25 @@ function displayData(data) {
     document.getElementById("temp").innerHTML = data.main.temp;
     document.getElementById("tempC").innerHTML = KtoC(data.main.temp);
     document.getElementById("tempF").innerHTML = KtoF(data.main.temp);
+
+    historicDataCity(city);
 }
 
 function historicDataLatLon(lat, lon) {
     var now = new Date(); 
     var utc = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
     var dt = 0; 
-    console.log(api.historic+'?lat='+lat+'&lon='+lon+'&appid='+api.key);
     fetch(api.historic+'?lat='+lat+'&lon='+lon+'&appid='+api.key)  
     .then(function(resp) { return resp.json() }) 
     .then(function(data) {
-      console.log(data);
       displayHistoricData(data);
     })
 }
 
 function historicDataCity(city) {
-    fetch(api.base+'weather?q='+city+'&appid='+api.key)  
-    .then(function(resp) { return resp.json() }) 
-    .then(function(data) {
-      displayData(data);
-    })
+    lat = cityLat;
+    lon = cityLon;
+    historicDataLatLon(lat, lon);
 }
 
 function displayHistoricData(data) {
