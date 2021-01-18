@@ -1,7 +1,7 @@
 const api = {
     key: '52272358b1bbd36f9820c327ca4fe861',
     base: "https://api.openweathermap.org/data/2.5/",
-    historic: "http://history.openweathermap.org/data/2.5/history/city"
+    historic: "https://api.openweathermap.org/data/2.5/onecall"
 }
 
 window.onload = function() {
@@ -14,7 +14,7 @@ function showPosition(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
     weatherBalloonLatLon(latitude, longitude);
-    historicData(latitude, longitude);
+    historicDataLatLon(latitude, longitude);
 }
 
 function weatherBalloonLatLon(lat, lon) {
@@ -28,7 +28,7 @@ function weatherBalloonLatLon(lat, lon) {
 function citySearch() {
     city = document.getElementById("city").value;
     weatherBalloonCity(city);
-    historicData(latitude, longitude);
+    historicDataCity(city);
     return false;
 }
 
@@ -49,8 +49,8 @@ function displayData(data) {
     document.getElementById("description").innerHTML = data.weather[0].description;
 
     var iconCode = data.weather[0].icon;
-    var iconurl = "http://openweathermap.org/img/w/" + iconCode + ".png";
-    document.getElementById("weatherIcon").src = iconurl;
+    var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+    document.getElementById("weatherIcon").src = iconUrl;
 
     document.getElementById("clouds").innerHTML = data.clouds.all;
     document.getElementById("windSpeed").innerHTML = data.wind.speed;
@@ -62,12 +62,39 @@ function displayData(data) {
     document.getElementById("tempF").innerHTML = KtoF(data.main.temp);
 }
 
-function historicData(lat, lon) {
-    fetch(api.base+'?lat='+lat+'&lon='+lon+'&type=hour&appid='+api.key)  
+function historicDataLatLon(lat, lon) {
+    var now = new Date(); 
+    var utc = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
+    var dt = 0; 
+    console.log(api.historic+'?lat='+lat+'&lon='+lon+'&appid='+api.key);
+    fetch(api.historic+'?lat='+lat+'&lon='+lon+'&appid='+api.key)  
     .then(function(resp) { return resp.json() }) 
     .then(function(data) {
-      console.log(data, "hello");
+      console.log(data);
+      displayHistoricData(data);
     })
+}
+
+function historicDataCity(city) {
+    fetch(api.base+'weather?q='+city+'&appid='+api.key)  
+    .then(function(resp) { return resp.json() }) 
+    .then(function(data) {
+      displayData(data);
+    })
+}
+
+function displayHistoricData(data) {
+    var futureTemp = document.getElementsByClassName("futureTemp");
+    var futureDesc = document.getElementsByClassName("futureDesc");
+    var futureWeatherIcon = document.getElementsByClassName("futureWeatherIcon");
+    for(var i=0;i<8;i++) {
+        var iconCode = data.daily[i].weather[0].icon;
+        var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+
+        futureDesc[i].innerHTML = data.daily[i].weather[0].description;
+        futureWeatherIcon[i].src = iconUrl
+        futureTemp[i].innerHTML = data.daily[i].temp.day
+    }
 }
 
 function KtoC(temp) {

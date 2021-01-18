@@ -18,13 +18,22 @@ form {
     margin-left: 10%;
 }
 
-h3 {
-    font-size: 2rem;
-}
-
 input, .row, .col, h3, button {
     margin: 0;
     border: 0;
+}
+
+.card {
+    margin: 8px;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.8);
+  transform: translateY(-10px);
 }
 
 #topcorner{
@@ -54,6 +63,7 @@ input, .row, .col, h3, button {
 
 #innerContent {
     margin-bottom: 0;
+    padding: 10px;
     border: 0;
 }
 
