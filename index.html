@@ -16,46 +16,37 @@
         <p>Longitude: <span id="lon"></span></p>
     </div>
     <div><h1>Weather App</h1></div>
-    <form onsubmit="return citySearch()">
-        <div class="input-field">
-            <input placeholder="Enter a city name here" id="city" type="text" class="validate">
-        </div>
-        <button value="submit" class="btn" type="submit">Search</button>
-    </form>
-    <div id="content">
-        <h3>Weather conditions for <span id="cityName"></span>:</h3>
-        <div id="innerContent">
-            <div class="row">
-                <div class="col s4">
-                    <p id="mainWeather"></p>
-                    <p id="desc">Brief Description: <span id="description"></span></p>
+    <div class="row">
+        <div class="col s12 m2">
+            <form onsubmit="return citySearch()">
+                <div class="input-field">
+                    Enter city name: <input id="city" type="text" class="validate">
                 </div>
-                <div class="col s6">
-                    <div id="icon"><img id="weatherIcon" src="" alt="Weather icon"></div>
-                </div>
-            </div>
-            <div id="extraDetails">
-                <p>Cloudiness: <span id="clouds"></span>%</p>
-                <p>Wind Speed: <span id="windSpeed"></span>meter/sec</p>
-                <p>Pressure: <span id="pressure"></span>hPa</p>
-                <p>Humidity: <span id="humidity"></span>%</p>
-            </div>
+                <button value="submit" class="btn" type="submit">Search</button>
+            </form>  
         </div>
-    </div>
-    <div id="additionalContent">
-        <div class="row">
-            <div class="col s4">
-                <h5>Temp</h5>
-                <p><span id="temp"></span>K, <span id="tempC"></span><sup>o</sup>C, <span id="tempF"></span><sup>o</sup>F</p>
-            </div>
-            <div class="col s4">
-                <h5>Min Temp</h5>
-                <p><span id="minTemp"></span>K, <span id="minTempC"></span><sup>o</sup>C, <span id="minTempF"></span><sup>o</sup>F</p>
-            </div>
-            <div class="col s4">
-                <h5>Max Temp</h5>
-                <p><span id="maxTemp"></span>K, <span id="maxTempC"></span><sup>o</sup>C, <span id="maxTempF"></span><sup>o</sup>F</p>
-            </div>
+        <div class="col s12 m10">
+            <div id="content">
+                <h3>Weather conditions for <span id="cityName"> N.A. </span>:</h3>
+                <div id="innerContent">
+                    <div class="row">
+                        <div class="col s4">
+                            <p id="mainWeather"></p>
+                            <p id="desc">Brief Description: <span id="description"> N.A. </span></p>
+                        </div>
+                        <div class="col s6">
+                            <div id="icon"><img id="weatherIcon" src="" alt="Weather icon"></div>
+                        </div>
+                    </div>
+                    <div id="extraDetails">
+                        <p>Cloudiness: <span id="clouds"> N.A. </span>%</p>
+                        <p>Wind Speed: <span id="windSpeed"> N.A. </span>meter/sec</p>
+                        <p>Pressure: <span id="pressure"> N.A. </span>hPa</p>
+                        <p>Humidity: <span id="humidity"> N.A. </span>%</p>
+                        <p>Temp: <span id="temp"> N.A. </span>K, <span id="tempC"> N.A. </span><sup>o</sup>C, <span id="tempF"> N.A. </span><sup>o</sup>F</p>
+                    </div>
+                </div>
+            </div>  
         </div>
     </div>
 </body>

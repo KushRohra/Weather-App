@@ -1,6 +1,7 @@
 const api = {
     key: '52272358b1bbd36f9820c327ca4fe861',
-    base: "https://api.openweathermap.org/data/2.5/"
+    base: "https://api.openweathermap.org/data/2.5/",
+    historic: "http://history.openweathermap.org/data/2.5/history/city"
 }
 
 window.onload = function() {
@@ -13,10 +14,11 @@ function showPosition(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
     weatherBalloonLatLon(latitude, longitude);
+    historicData(latitude, longitude);
 }
 
 function weatherBalloonLatLon(lat, lon) {
-    fetch(api.base+'weather?lat='+lat+'&lon='+lon+'&APPID='+api.key)  
+    fetch(api.base+'weather?lat='+lat+'&lon='+lon+'&appid='+api.key)  
     .then(function(resp) { return resp.json() }) 
     .then(function(data) {
       displayData(data);
@@ -26,11 +28,12 @@ function weatherBalloonLatLon(lat, lon) {
 function citySearch() {
     city = document.getElementById("city").value;
     weatherBalloonCity(city);
+    historicData(latitude, longitude);
     return false;
 }
 
 function weatherBalloonCity(city) {
-    fetch(api.base+'weather?q='+city+'&APPID='+api.key)  
+    fetch(api.base+'weather?q='+city+'&appid='+api.key)  
     .then(function(resp) { return resp.json() }) 
     .then(function(data) {
       displayData(data);
@@ -57,14 +60,14 @@ function displayData(data) {
     document.getElementById("temp").innerHTML = data.main.temp;
     document.getElementById("tempC").innerHTML = KtoC(data.main.temp);
     document.getElementById("tempF").innerHTML = KtoF(data.main.temp);
+}
 
-    document.getElementById("minTemp").innerHTML = data.main.temp_min;
-    document.getElementById("minTempC").innerHTML = KtoC(data.main.temp_min);
-    document.getElementById("minTempF").innerHTML = KtoF(data.main.temp_min);
-
-    document.getElementById("maxTemp").innerHTML = data.main.temp_max;
-    document.getElementById("maxTempC").innerHTML = KtoC(data.main.temp_max);
-    document.getElementById("maxTempF").innerHTML = KtoF(data.main.temp_max);
+function historicData(lat, lon) {
+    fetch(api.base+'?lat='+lat+'&lon='+lon+'&type=hour&appid='+api.key)  
+    .then(function(resp) { return resp.json() }) 
+    .then(function(data) {
+      console.log(data, "hello");
+    })
 }
 
 function KtoC(temp) {
